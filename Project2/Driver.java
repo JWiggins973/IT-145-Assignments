@@ -6,8 +6,6 @@ public class Driver {
     private static ArrayList<Dog> dogList = new ArrayList<Dog>();
     private static ArrayList<Monkey> monkeyList = new ArrayList<Monkey>();
 
-    // Instance variables (if needed)
-
     public static void main(String[] args) {
 
         initializeDogList();
@@ -16,15 +14,6 @@ public class Driver {
         Scanner scnr = new Scanner(System.in);
         char userInput;
         char validate;
-
-        // Add a loop that displays the menu, accepts the users input
-        // and takes the appropriate action.
-        // For the project submission you must also include input validation
-        // and appropriate feedback to the user.
-        // Hint: create a Scanner and pass it to the necessary
-        // methods
-        // Hint: Menu options 4, 5, and 6 should all connect to the printAnimals()
-        // method.
 
         // Print menu loop with user validation and case sensitivity
         do {
@@ -108,7 +97,6 @@ public class Driver {
     }
 
     // Adds monkeys to a list for testing
-    // Optional for testing
     public static void initializeMonkeyList() {
         Monkey monkey1 = new Monkey("George", "Capuchin", "Male", "5", "31", "11", "6", "9", "02-01-2019",
                 "United States", "Phase I", false, "United States");
@@ -116,6 +104,7 @@ public class Driver {
         monkeyList.add(monkey1);
     }
 
+    
     // IntakeNewDog method
     public static void intakeNewDog(Scanner scnr) {
 
@@ -243,7 +232,8 @@ public class Driver {
             monkeyList.add(newMonkey);
 
         } 
-        
+
+            // Catch boolean mismatch exception
         catch (InputMismatchException e) {
             System.out.println("Error: Input mismatch enter boolean (true/false)"); // Error message for mismatch input 
             scnr.nextLine(); // Consume invild input line
@@ -266,7 +256,7 @@ public class Driver {
             animal = scnr.nextLine();
         } while (!animal.equalsIgnoreCase("monkey") && !animal.equalsIgnoreCase("dog"));
 
-        // Ask user what country for reservatiom
+        // Ask user what country for reservation
         System.out.println("In what country would you like to make the reservation?");
         country = scnr.nextLine();
 
@@ -309,18 +299,13 @@ public class Driver {
     // PrintAnimals
     // Include the animal name, status, acquisition country and if the animal is
     // reserved.
-    // Remember that this method connects to three different menu items.
-    // The printAnimals() method has three different outputs
-    // based on the listType parameter
     // dog - prints the list of dogs
     // monkey - prints the list of monkeys
     // available - prints a combined list of all animals that are
     // fully trained ("in service") but not reserved
-    // Remember that you only have to fully implement ONE of these lists.
-    // The other lists can have a print statement saying "This option needs to be
-    // implemented".
-    // To score "exemplary" you must correctly implement the "available" list.
     public static void printAnimals(char userInput) {
+
+        // Print all dogs
         if (userInput == '4') {
             System.out.println("List of all Dogs");
             for (Dog dog : dogList) {
@@ -328,14 +313,20 @@ public class Driver {
                         + "  Aquisition country: " + dog.getAcquisitionLocation() + "  Training status: "
                         + dog.getTrainingStatus());
             }
-        } else if (userInput == '5') {
+        }
+            
+        // Prints all monkeys
+        else if (userInput == '5') {
             System.out.println("List of all Monkeys");
             for (Monkey monkey : monkeyList) {
                 System.out.println("Name: " + monkey.getName() + "  Status: " + monkey.getTrainingStatus()
                         + "  Aquisition country: " + monkey.getAcquisitionLocation() + "  Training status: "
                         + monkey.getTrainingStatus());
             }
-        } else if (userInput == '6') {
+        } 
+
+            // Prints  unreserved animals
+        else if (userInput == '6') {
             System.out.println("List of unreserved Dogs");
             for (Dog dog : dogList) {
                 if (!dog.getReserved() && dog.getTrainingStatus().equalsIgnoreCase("in service")) {
