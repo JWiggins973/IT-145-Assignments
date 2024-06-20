@@ -168,7 +168,8 @@ public class Driver {
             // Add new dog to list
             dogList.add(newDog);
         } 
-        
+
+            // Catch mismatch exception for boolean
         catch (InputMismatchException e) {
             System.out.println("Error: Input mismatch enter boolean (true/false)"); // Prints error message for mismatch input
             scnr.nextLine(); // Consume invild input line
