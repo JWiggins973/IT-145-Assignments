@@ -12,9 +12,9 @@ public class RescueAnimal {
     private String weight;
     private String acquisitionDate;
     private String acquisitionCountry;
-	private String trainingStatus;
+    private String trainingStatus;
     private boolean reserved;
-	private String inServiceCountry;
+    private String inServiceCountry;
 
 
     // Constructor
